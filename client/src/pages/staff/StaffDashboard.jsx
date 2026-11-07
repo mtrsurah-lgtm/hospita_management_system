@@ -51,20 +51,20 @@ const StaffDashboard = () => {
             Register incoming walk-in patients, manage appointment tokens, and process billing.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2.5">
           <Link
             to="/staff/patients"
-            className="px-4 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-sky text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-all shadow-md"
+            className="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-md shadow-teal-600/20 whitespace-nowrap active:scale-95"
           >
-            <UserPlus className="w-4 h-4" />
-            Register Walk-In
+            <UserPlus className="w-4 h-4 shrink-0" />
+            <span>Register Walk-In</span>
           </Link>
           <Link
             to="/staff/appointments"
-            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-all"
+            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-all whitespace-nowrap active:scale-95 shadow-sm"
           >
-            <CalendarCheck className="w-4 h-4" />
-            Book Slot
+            <CalendarCheck className="w-4 h-4 shrink-0" />
+            <span>Book Slot</span>
           </Link>
         </div>
       </div>
@@ -98,10 +98,10 @@ const StaffDashboard = () => {
       <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
         <div className="flex items-center justify-between mb-6">
           <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
-            <Clock className="w-5 h-5 text-brand-blue" />
+            <Clock className="w-5 h-5 text-teal-600" />
             Today's Check-In Desk
           </h3>
-          <Link to="/staff/appointments" className="text-xs font-bold text-brand-blue hover:underline">
+          <Link to="/staff/appointments" className="text-xs font-bold text-teal-600 hover:underline">
             Manage All Appointments →
           </Link>
         </div>

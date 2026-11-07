@@ -70,7 +70,7 @@ const Sidebar = () => {
         </div>
         <div>
           <h2 className="font-bold tracking-tight text-white leading-tight">AEGIS HEALTH</h2>
-          <span className="text-[11px] font-semibold tracking-wider uppercase text-brand-sky">
+          <span className="text-[11px] font-semibold tracking-wider uppercase text-teal-400">
             {role?.toUpperCase()} PORTAL
           </span>
         </div>
@@ -91,7 +91,7 @@ const Sidebar = () => {
               className={({ isActive }) =>
                 `flex items-center px-3.5 py-3 rounded-xl text-sm font-medium transition-all ${
                   isActive
-                    ? 'bg-brand-blue text-white shadow-md shadow-teal-600/30'
+                    ? 'bg-teal-600 text-white shadow-md shadow-teal-600/30'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`
               }

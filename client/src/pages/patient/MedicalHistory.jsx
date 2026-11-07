@@ -47,7 +47,7 @@ const MedicalHistory = () => {
       {/* Profile Overview Card */}
       <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-blue block">Demographics</span>
+          <span className="text-xs font-bold uppercase tracking-wider text-teal-600 block">Demographics</span>
           <div>
             <h3 className="text-lg font-bold text-slate-900">{patient?.userId?.name}</h3>
             <p className="text-xs text-slate-500">{patient?.userId?.email}</p>
@@ -89,7 +89,7 @@ const MedicalHistory = () => {
       {/* Past Visits Timeline */}
       <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-6">
         <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
-          <History className="w-5 h-5 text-brand-blue" />
+          <History className="w-5 h-5 text-teal-600" />
           Clinical Visits Timeline
         </h3>
 
@@ -100,7 +100,7 @@ const MedicalHistory = () => {
             {appointments.map((a) => (
               <div key={a._id} className="relative">
                 {/* Dot */}
-                <div className="absolute -left-[31px] top-0 w-3.5 h-3.5 rounded-full bg-brand-blue border-2 border-white shadow-sm" />
+                <div className="absolute -left-[31px] top-0 w-3.5 h-3.5 rounded-full bg-teal-600 border-2 border-white shadow-sm" />
 
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-2">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">

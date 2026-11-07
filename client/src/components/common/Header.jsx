@@ -19,7 +19,7 @@ const Header = ({ title = 'Dashboard' }) => {
         {/* Back to public home */}
         <Link
           to="/"
-          className="p-2 text-slate-500 hover:text-brand-blue hover:bg-slate-100 rounded-lg transition-colors flex items-center gap-1.5 text-xs font-semibold"
+          className="p-2 text-slate-500 hover:text-teal-600 hover:bg-slate-100 rounded-lg transition-colors flex items-center gap-1.5 text-xs font-semibold"
           title="Hospital Homepage"
         >
           <Home className="w-4 h-4" />

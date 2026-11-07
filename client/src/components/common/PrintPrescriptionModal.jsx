@@ -22,7 +22,7 @@ const PrintPrescriptionModal = ({ isOpen, onClose, record }) => {
           {/* Hospital Letterhead Header */}
           <div className="flex items-start justify-between border-b-2 border-teal-600 pb-4">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 rounded-xl bg-brand-blue flex items-center justify-center text-white font-black shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-teal-600 flex items-center justify-center text-white font-black shadow-sm">
                 <Activity className="w-7 h-7 stroke-[2.5]" />
               </div>
               <div>
@@ -35,7 +35,7 @@ const PrintPrescriptionModal = ({ isOpen, onClose, record }) => {
             </div>
 
             <div className="text-right">
-              <span className="inline-block px-2.5 py-0.5 rounded bg-brand-sky/10 text-teal-800 font-bold text-xs uppercase border border-teal-200">
+              <span className="inline-block px-2.5 py-0.5 rounded bg-teal-50 text-teal-800 font-bold text-xs uppercase border border-teal-200">
                 Official Rx Voucher
               </span>
               <p className="text-[11px] text-slate-500 mt-1 font-semibold">
@@ -66,7 +66,7 @@ const PrintPrescriptionModal = ({ isOpen, onClose, record }) => {
 
           {/* Vitals Strip */}
           {record.vitals && (
-            <div className="grid grid-cols-5 gap-2 text-center text-xs p-3 bg-brand-sky/10/50 rounded-xl border border-teal-100">
+            <div className="grid grid-cols-5 gap-2 text-center text-xs p-3 bg-teal-50 rounded-xl border border-teal-100">
               <div>
                 <span className="text-[10px] uppercase font-bold text-slate-400 block">BP</span>
                 <span className="font-bold text-slate-800">{record.vitals.bloodPressure || '—'}</span>
@@ -92,7 +92,7 @@ const PrintPrescriptionModal = ({ isOpen, onClose, record }) => {
 
           {/* Clinical Diagnosis */}
           <div className="text-xs">
-            <span className="text-[10px] uppercase font-bold text-brand-blue tracking-wider block">Clinical Diagnosis</span>
+            <span className="text-[10px] uppercase font-bold text-teal-600 tracking-wider block">Clinical Diagnosis</span>
             <p className="text-base font-bold text-slate-900 mt-0.5">{record.diagnosis}</p>
             {record.symptoms && record.symptoms.length > 0 && (
               <p className="text-[11px] text-slate-500 mt-0.5">Symptoms: {record.symptoms.join(', ')}</p>
@@ -180,7 +180,7 @@ const PrintPrescriptionModal = ({ isOpen, onClose, record }) => {
           <button
             type="button"
             onClick={handlePrint}
-            className="px-6 py-2.5 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky transition-colors flex items-center gap-1.5 shadow-md shadow-brand-blue/20"
+            className="px-6 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 transition-colors flex items-center gap-1.5 shadow-md shadow-teal-600/20"
           >
             <Printer className="w-4 h-4" />
             Print Official Prescription

@@ -34,7 +34,7 @@ const Navbar = () => {
             </div>
             <div>
               <span className="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1.5">
-                AEGIS <span className="text-brand-blue font-bold">HEALTH</span>
+                AEGIS <span className="text-teal-600 font-bold">HEALTH</span>
               </span>
               <span className="block text-[10px] font-semibold uppercase tracking-widest text-slate-400 -mt-1">
                 Advanced Hospital System
@@ -44,17 +44,14 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors">
+            <Link to="/" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
               Home
             </Link>
-            <Link to="/departments" className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors">
+            <Link to="/departments" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
               Departments
             </Link>
-            <Link to="/doctors" className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors">
+            <Link to="/doctors" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
               Find Doctors
-            </Link>
-            <Link to="/contact" className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors">
-              Contact Us
             </Link>
           </nav>
 
@@ -64,7 +61,7 @@ const Navbar = () => {
               <div className="flex items-center space-x-3">
                 <Link
                   to={getDashboardPath()}
-                  className="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-lg bg-brand-blue text-white hover:bg-brand-sky shadow-sm transition-all"
+                  className="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-lg bg-teal-600 text-white hover:bg-teal-700 shadow-sm transition-all"
                 >
                   <Shield className="w-4 h-4 mr-2" />
                   Dashboard ({role})
@@ -84,13 +81,13 @@ const Navbar = () => {
               <>
                 <Link
                   to="/login"
-                  className="text-sm font-semibold text-slate-700 hover:text-brand-blue px-3 py-2 transition-colors"
+                  className="text-sm font-semibold text-slate-700 hover:text-teal-600 px-3 py-2 transition-colors"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/register"
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg bg-brand-blue text-white hover:bg-brand-sky shadow-sm transition-all"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg bg-teal-600 text-white hover:bg-teal-700 shadow-sm transition-all"
                 >
                   Patient Portal
                   <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -135,13 +132,6 @@ const Navbar = () => {
           >
             Find Doctors
           </Link>
-          <Link
-            to="/contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-lg"
-          >
-            Contact Us
-          </Link>
 
           <div className="pt-4 border-t border-slate-100 flex flex-col gap-2">
             {isAuthenticated ? (
@@ -149,7 +139,7 @@ const Navbar = () => {
                 <Link
                   to={getDashboardPath()}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center px-4 py-2.5 rounded-lg bg-brand-blue text-white font-semibold"
+                  className="w-full text-center px-4 py-2.5 rounded-lg bg-teal-600 text-white font-semibold"
                 >
                   Go to {role} Dashboard
                 </Link>
@@ -176,7 +166,7 @@ const Navbar = () => {
                 <Link
                   to="/register"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center px-4 py-2.5 rounded-lg bg-brand-blue text-white font-semibold"
+                  className="w-full text-center px-4 py-2.5 rounded-lg bg-teal-600 text-white font-semibold"
                 >
                   Register as Patient
                 </Link>

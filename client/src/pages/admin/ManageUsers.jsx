@@ -112,7 +112,7 @@ const ManageUsers = () => {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky shadow-sm transition-all"
+          className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md shadow-teal-600/20 transition-all whitespace-nowrap active:scale-95"
         >
           <Plus className="w-4 h-4 mr-1.5" />
           Add User / Staff / Doctor
@@ -128,7 +128,7 @@ const ManageUsers = () => {
               onClick={() => setSelectedRole(role)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all capitalize ${
                 selectedRole === role
-                  ? 'bg-brand-blue text-white shadow-sm'
+                  ? 'bg-teal-600 text-white shadow-sm'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -144,7 +144,7 @@ const ManageUsers = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name, email, phone..."
-            className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+            className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
           />
         </div>
       </div>
@@ -202,14 +202,24 @@ const ManageUsers = () => {
                     <td className="py-3.5 px-4 text-right">
                       <button
                         onClick={() => handleToggleStatus(u._id)}
-                        className={`p-1.5 rounded-lg border text-xs font-semibold transition-colors ${
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all whitespace-nowrap active:scale-95 shadow-sm ${
                           u.isActive
-                            ? 'border-rose-200 text-rose-600 hover:bg-rose-50'
-                            : 'border-emerald-200 text-emerald-600 hover:bg-emerald-50'
+                            ? 'border-rose-200 text-rose-700 bg-rose-50/70 hover:bg-rose-100 hover:border-rose-300'
+                            : 'border-emerald-200 text-emerald-700 bg-emerald-50/70 hover:bg-emerald-100 hover:border-emerald-300'
                         }`}
                         title={u.isActive ? 'Deactivate account' : 'Activate account'}
                       >
-                        {u.isActive ? <UserX className="w-4 h-4" /> : <UserCheck className="w-4 h-4" />}
+                        {u.isActive ? (
+                          <>
+                            <UserX className="w-3.5 h-3.5 shrink-0" />
+                            <span>Deactivate</span>
+                          </>
+                        ) : (
+                          <>
+                            <UserCheck className="w-3.5 h-3.5 shrink-0" />
+                            <span>Activate</span>
+                          </>
+                        )}
                       </button>
                     </td>
                   </tr>
@@ -241,7 +251,7 @@ const ManageUsers = () => {
             <select
               value={formData.role}
               onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-blue font-semibold"
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500 font-semibold"
             >
               <option value="staff">Staff / Receptionist Desk</option>
               <option value="doctor">Medical Doctor</option>
@@ -261,7 +271,7 @@ const ManageUsers = () => {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="Dr. John Smith"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500"
               />
             </div>
             <div>
@@ -273,7 +283,7 @@ const ManageUsers = () => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="+1 (555) 000-0000"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500"
               />
             </div>
           </div>
@@ -289,7 +299,7 @@ const ManageUsers = () => {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="user@hospital.com"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500"
               />
             </div>
             <div>
@@ -303,14 +313,14 @@ const ManageUsers = () => {
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 placeholder="••••••••"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500"
               />
             </div>
           </div>
 
           {/* Conditional Doctor Fields */}
           {formData.role === 'doctor' && (
-            <div className="p-4 rounded-2xl bg-brand-sky/10/60 border border-teal-100 space-y-3">
+            <div className="p-4 rounded-2xl bg-teal-50 border border-teal-100 space-y-3">
               <span className="font-bold text-teal-800 uppercase tracking-wider text-[11px] block">
                 Doctor Profile Details
               </span>
@@ -368,7 +378,7 @@ const ManageUsers = () => {
             <button
               type="submit"
               disabled={modalSubmitting}
-              className="px-5 py-2 rounded-xl bg-brand-blue text-white font-bold hover:bg-brand-sky disabled:opacity-50"
+              className="px-5 py-2 rounded-xl bg-teal-600 text-white font-bold hover:bg-teal-700 disabled:opacity-50"
             >
               {modalSubmitting ? 'Registering...' : 'Create Account'}
             </button>

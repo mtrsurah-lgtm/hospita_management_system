@@ -69,7 +69,7 @@ const SystemAnalytics = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
           <h3 className="font-bold text-slate-900 text-lg mb-6 flex items-center gap-2">
-            <CalendarCheck className="w-5 h-5 text-brand-blue" />
+            <CalendarCheck className="w-5 h-5 text-teal-600" />
             Appointments Fulfillment
           </h3>
 
@@ -118,7 +118,7 @@ const SystemAnalytics = () => {
         {/* Clinical Department Volume */}
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
           <h3 className="font-bold text-slate-900 text-lg mb-6 flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-brand-blue" />
+            <BarChart3 className="w-5 h-5 text-teal-600" />
             Specialists Allocation
           </h3>
 
@@ -127,11 +127,11 @@ const SystemAnalytics = () => {
               <div key={d.name} className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-slate-700">
                   <span>{d.name}</span>
-                  <span className="text-brand-blue font-bold">{d.doctorCount} Doctor(s)</span>
+                  <span className="text-teal-600 font-bold">{d.doctorCount} Doctor(s)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
                   <div
-                    className="bg-brand-blue h-full rounded-full"
+                    className="bg-teal-600 h-full rounded-full"
                     style={{
                       width: `${Math.min(100, Math.max(10, (d.doctorCount / (counts.doctors || 1)) * 100))}%`,
                     }}

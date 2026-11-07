@@ -43,7 +43,7 @@ const DoctorsPage = () => {
   return (
     <div className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Medical Directory</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-teal-600">Medical Directory</span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Our Medical Specialists</h1>
         <p className="mt-3 text-sm text-slate-500">
           Search qualified doctors by name, specialty, or department and view their active schedules.
@@ -59,7 +59,7 @@ const DoctorsPage = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by doctor name or specialty..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-teal-500"
           />
         </div>
 
@@ -68,7 +68,7 @@ const DoctorsPage = () => {
           <select
             value={selectedDepartment}
             onChange={(e) => handleDeptChange(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue text-slate-700 bg-white"
+            className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-teal-500 text-slate-700 bg-white"
           >
             <option value="">All Clinical Departments</option>
             {departments.map((d) => (
@@ -107,7 +107,7 @@ const DoctorsPage = () => {
                     className="w-20 h-20 rounded-2xl object-cover border border-slate-200 shrink-0 shadow-sm"
                   />
                   <div>
-                    <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-brand-blue bg-brand-sky/10 px-2 py-0.5 rounded-md mb-1">
+                    <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-teal-600 bg-teal-50 px-2 py-0.5 rounded-md mb-1">
                       {doc.departmentId?.name || 'Specialist'}
                     </span>
                     <h3 className="font-bold text-slate-900 text-lg leading-tight">{doc.userId?.name}</h3>
@@ -127,16 +127,16 @@ const DoctorsPage = () => {
                 <div className="mt-4 pt-4 border-t border-slate-100 space-y-2 text-xs">
                   <div className="flex items-center justify-between text-slate-600">
                     <span className="flex items-center gap-1.5 text-slate-500">
-                      <Clock className="w-3.5 h-3.5 text-brand-blue" /> Experience
+                      <Clock className="w-3.5 h-3.5 text-teal-600" /> Experience
                     </span>
                     <span className="font-bold text-slate-800">{doc.experienceYears} Years</span>
                   </div>
 
                   <div className="flex items-center justify-between text-slate-600">
                     <span className="flex items-center gap-1.5 text-slate-500">
-                      <DollarSign className="w-3.5 h-3.5 text-brand-blue" /> Consultation Fee
+                      <DollarSign className="w-3.5 h-3.5 text-teal-600" /> Consultation Fee
                     </span>
-                    <span className="font-bold text-brand-blue text-sm">${doc.consultationFee}</span>
+                    <span className="font-bold text-teal-600 text-sm">${doc.consultationFee}</span>
                   </div>
                 </div>
 
@@ -155,7 +155,7 @@ const DoctorsPage = () => {
               <div className="p-4 bg-slate-50 border-t border-slate-100">
                 <Link
                   to="/patient/book"
-                  className="w-full py-2.5 px-4 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full py-2.5 px-4 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
                 >
                   <Calendar className="w-4 h-4" />
                   Book Consultation Slot

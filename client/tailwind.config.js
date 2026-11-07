@@ -7,6 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: {
+          blue: '#0d9488',
+          sky: '#0284c7',
+          dark: '#0f766e',
+          light: '#f0fdfa',
+          purple: '#7c3aed',
+        },
         primary: {
           50: '#f0fdfa',
           100: '#ccfbf1',
@@ -24,14 +31,9 @@ export default {
           sky: '#0284c7',
           teal: '#0f766e',
           slate: '#0f172a',
-        },
-        "brand-blue": "#2323FF",
-        "brand-sky": "#24AEFF",
-        "brand-purple": "#C04AFF",
-        "brand-violet": "#7E3DFF",
+        }
       },
     },
   },
   plugins: [],
 }
-

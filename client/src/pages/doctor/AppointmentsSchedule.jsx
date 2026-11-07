@@ -57,7 +57,7 @@ const AppointmentsSchedule = () => {
               onClick={() => setStatusFilter(st)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                 statusFilter === st
-                  ? 'bg-brand-blue text-white shadow-sm'
+                  ? 'bg-teal-600 text-white shadow-sm'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -72,7 +72,7 @@ const AppointmentsSchedule = () => {
             type="date"
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue text-slate-700"
+            className="px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500 text-slate-700"
           />
           {dateFilter && (
             <button
@@ -116,7 +116,7 @@ const AppointmentsSchedule = () => {
                         <p className="font-bold text-slate-900">
                           {new Date(a.appointmentDate).toLocaleDateString()}
                         </p>
-                        <p className="text-[11px] text-brand-blue font-semibold">{a.timeSlot}</p>
+                        <p className="text-[11px] text-teal-600 font-semibold">{a.timeSlot}</p>
                       </td>
                       <td className="py-3.5 px-4">
                         <p className="font-bold text-slate-800">{a.patientId?.userId?.name}</p>
@@ -134,7 +134,7 @@ const AppointmentsSchedule = () => {
                       <td className="py-3.5 px-4 text-right space-x-2">
                         <Link
                           to={`/doctor/emr?appointmentId=${a._id}&patientId=${a.patientId?._id}`}
-                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand-sky/10 text-brand-blue hover:bg-brand-blue hover:text-white font-bold transition-all"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-50 text-teal-600 hover:bg-teal-600 hover:text-white font-bold transition-all"
                         >
                           <FileText className="w-3.5 h-3.5" />
                           <span>EMR</span>

@@ -40,26 +40,26 @@ const DoctorDashboard = () => {
       {/* Doctor Header Banner */}
       <div className="bg-gradient-to-r from-teal-800 to-teal-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <span className="text-xs uppercase font-bold tracking-widest text-brand-sky">Doctor Console</span>
+          <span className="text-xs uppercase font-bold tracking-widest text-teal-400">Doctor Console</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold mt-1">Welcome back, {user?.name}</h2>
-          <p className="text-xs text-brand-purple/60 mt-1">
+          <p className="text-xs text-teal-200 mt-1">
             You have <span className="font-bold text-white">{todayAppts.length} appointments</span> scheduled for today.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2.5">
           <Link
             to="/doctor/emr"
-            className="px-4 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-sky text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-all shadow-md shadow-teal-500/20"
+            className="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-md shadow-teal-600/20 whitespace-nowrap active:scale-95"
           >
-            <FileText className="w-4 h-4" />
-            Write Prescription / EMR
+            <FileText className="w-4 h-4 shrink-0" />
+            <span>Write Prescription / EMR</span>
           </Link>
           <Link
             to="/doctor/availability"
-            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-all"
+            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-all whitespace-nowrap active:scale-95 shadow-sm"
           >
-            <Clock className="w-4 h-4" />
-            Manage My Slots
+            <Clock className="w-4 h-4 shrink-0" />
+            <span>Manage My Slots</span>
           </Link>
         </div>
       </div>
@@ -94,12 +94,12 @@ const DoctorDashboard = () => {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
-              <CalendarCheck className="w-5 h-5 text-brand-blue" />
+              <CalendarCheck className="w-5 h-5 text-teal-600" />
               Assigned Patients Queue
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">Click "Consult & Prescribe" to launch the medical record builder.</p>
           </div>
-          <Link to="/doctor/appointments" className="text-xs font-bold text-brand-blue hover:underline">
+          <Link to="/doctor/appointments" className="text-xs font-bold text-teal-600 hover:underline">
             View All →
           </Link>
         </div>
@@ -126,7 +126,7 @@ const DoctorDashboard = () => {
               ) : (
                 appointments.map((appt) => (
                   <tr key={appt._id} className="hover:bg-slate-50/60 transition-colors">
-                    <td className="py-3.5 px-4 font-bold text-brand-blue">
+                    <td className="py-3.5 px-4 font-bold text-teal-600">
                       #{appt.tokenNumber || 1}
                     </td>
                     <td className="py-3.5 px-4">
@@ -143,7 +143,7 @@ const DoctorDashboard = () => {
                     <td className="py-3.5 px-4 text-right">
                       <Link
                         to={`/doctor/emr?appointmentId=${appt._id}&patientId=${appt.patientId?._id}`}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-brand-sky/10 text-brand-blue hover:bg-brand-blue hover:text-white font-bold transition-all"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-teal-50 text-teal-600 hover:bg-teal-600 hover:text-white font-bold transition-all"
                       >
                         <FileText className="w-3.5 h-3.5" />
                         <span>Consult & Prescribe</span>

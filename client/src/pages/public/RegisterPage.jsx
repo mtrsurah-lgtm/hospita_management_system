@@ -44,7 +44,7 @@ const RegisterPage = () => {
     <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/50">
         <div className="text-center">
-          <div className="mx-auto w-12 h-12 rounded-2xl bg-brand-blue flex items-center justify-center text-white shadow-md shadow-teal-600/30">
+          <div className="mx-auto w-12 h-12 rounded-2xl bg-teal-600 flex items-center justify-center text-white shadow-md shadow-teal-600/30">
             <Activity className="w-7 h-7 stroke-[2.5]" />
           </div>
           <h2 className="mt-4 text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -77,7 +77,7 @@ const RegisterPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
-                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue"
+                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-teal-500"
                 />
               </div>
             </div>
@@ -95,7 +95,7 @@ const RegisterPage = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue"
+                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-teal-500"
                 />
               </div>
             </div>
@@ -114,7 +114,7 @@ const RegisterPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="patient@example.com"
-                className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue"
+                className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-teal-500"
               />
             </div>
           </div>
@@ -133,7 +133,7 @@ const RegisterPage = () => {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="At least 6 characters"
-                className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue"
+                className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-teal-500"
               />
             </div>
           </div>
@@ -149,7 +149,7 @@ const RegisterPage = () => {
                 name="dateOfBirth"
                 value={formData.dateOfBirth}
                 onChange={handleChange}
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
 
@@ -161,7 +161,7 @@ const RegisterPage = () => {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -177,7 +177,7 @@ const RegisterPage = () => {
                 name="bloodGroup"
                 value={formData.bloodGroup}
                 onChange={handleChange}
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               >
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
@@ -195,7 +195,7 @@ const RegisterPage = () => {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full mt-4 py-3 px-4 rounded-xl bg-brand-blue text-white font-bold text-sm hover:bg-brand-sky transition-all flex items-center justify-center gap-2 shadow-md shadow-brand-blue/20 disabled:opacity-50"
+            className="w-full mt-4 py-3 px-4 rounded-xl bg-teal-600 text-white font-bold text-sm hover:bg-teal-700 transition-all flex items-center justify-center gap-2 shadow-md shadow-teal-600/20 disabled:opacity-50"
           >
             {submitting ? 'Creating Patient File...' : 'Complete Patient Registration'}
             <ArrowRight className="w-4 h-4" />
@@ -204,7 +204,7 @@ const RegisterPage = () => {
 
         <div className="text-center text-xs text-slate-500 pt-1">
           Already registered?{' '}
-          <Link to="/login" className="font-bold text-brand-blue hover:underline">
+          <Link to="/login" className="font-bold text-teal-600 hover:underline">
             Sign In here
           </Link>
         </div>

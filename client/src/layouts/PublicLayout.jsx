@@ -18,7 +18,7 @@ const PublicLayout = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <div className="w-9 h-9 rounded-xl bg-brand-blue flex items-center justify-center text-slate-950 font-bold">
+                <div className="w-9 h-9 rounded-xl bg-teal-500 flex items-center justify-center text-white font-bold">
                   <Activity className="w-5 h-5" />
                 </div>
                 <span className="text-lg font-bold text-white tracking-tight">AEGIS HEALTH</span>
@@ -31,11 +31,10 @@ const PublicLayout = () => {
             <div>
               <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/departments" className="hover:text-brand-sky transition-colors">Specialized Departments</Link></li>
-                <li><Link to="/doctors" className="hover:text-brand-sky transition-colors">Find a Specialist</Link></li>
-                <li><Link to="/contact" className="hover:text-brand-sky transition-colors">Contact Us</Link></li>
-                <li><Link to="/login" className="hover:text-brand-sky transition-colors">Doctor / Staff Login</Link></li>
-                <li><Link to="/register" className="hover:text-brand-sky transition-colors">Patient Portal</Link></li>
+                <li><Link to="/departments" className="hover:text-teal-400 transition-colors">Specialized Departments</Link></li>
+                <li><Link to="/doctors" className="hover:text-teal-400 transition-colors">Find a Specialist</Link></li>
+                <li><Link to="/login" className="hover:text-teal-400 transition-colors">Doctor / Staff Login</Link></li>
+                <li><Link to="/register" className="hover:text-teal-400 transition-colors">Patient Portal</Link></li>
               </ul>
             </div>
 
@@ -53,11 +52,11 @@ const PublicLayout = () => {
             <div>
               <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Campus Location</h4>
               <p className="text-sm flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-brand-sky shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
                 <span>4500 Healthcare Blvd, Medical District, Springfield, IL 62704</span>
               </p>
               <p className="text-sm flex items-center gap-2 mt-3">
-                <Mail className="w-4 h-4 text-brand-sky shrink-0" />
+                <Mail className="w-4 h-4 text-teal-400 shrink-0" />
                 <span>care@aegishealth.org</span>
               </p>
             </div>

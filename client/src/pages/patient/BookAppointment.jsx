@@ -135,16 +135,16 @@ const BookAppointment = () => {
 
       {/* Wizard Progress Bar */}
       <div className="grid grid-cols-4 gap-2 text-center text-xs font-bold">
-        <div className={`p-2.5 rounded-xl border ${step >= 1 ? 'bg-brand-blue text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
+        <div className={`p-2.5 rounded-xl border ${step >= 1 ? 'bg-teal-600 text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
           1. Department
         </div>
-        <div className={`p-2.5 rounded-xl border ${step >= 2 ? 'bg-brand-blue text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
+        <div className={`p-2.5 rounded-xl border ${step >= 2 ? 'bg-teal-600 text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
           2. Specialist
         </div>
-        <div className={`p-2.5 rounded-xl border ${step >= 3 ? 'bg-brand-blue text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
+        <div className={`p-2.5 rounded-xl border ${step >= 3 ? 'bg-teal-600 text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
           3. Slot & Date
         </div>
-        <div className={`p-2.5 rounded-xl border ${step >= 4 ? 'bg-brand-blue text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
+        <div className={`p-2.5 rounded-xl border ${step >= 4 ? 'bg-teal-600 text-white border-teal-600' : 'bg-white text-slate-400 border-slate-200'}`}>
           4. Confirm
         </div>
       </div>
@@ -160,7 +160,7 @@ const BookAppointment = () => {
       {step === 1 && (
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-6">
           <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-brand-blue" />
+            <Building2 className="w-5 h-5 text-teal-600" />
             Step 1: Choose Medical Department
           </h3>
 
@@ -171,13 +171,13 @@ const BookAppointment = () => {
                 onClick={() => setSelectedDeptId(d._id)}
                 className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${
                   selectedDeptId === d._id
-                    ? 'border-teal-600 bg-brand-sky/10/50 shadow-md'
+                    ? 'border-teal-600 bg-teal-50 shadow-md'
                     : 'border-slate-100 bg-slate-50 hover:border-slate-300'
                 }`}
               >
                 <h4 className="font-bold text-slate-900 text-sm">{d.name}</h4>
                 <p className="text-xs text-slate-500 mt-1 line-clamp-2">{d.description}</p>
-                <div className="mt-3 text-[11px] font-semibold text-brand-blue">
+                <div className="mt-3 text-[11px] font-semibold text-teal-600">
                   {d.doctorCount || 1} Doctor(s) Available
                 </div>
               </div>
@@ -189,7 +189,7 @@ const BookAppointment = () => {
               type="button"
               disabled={!selectedDeptId}
               onClick={() => setStep(2)}
-              className="px-6 py-2.5 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky disabled:opacity-40 flex items-center gap-1.5 transition-all"
+              className="px-6 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 disabled:opacity-40 flex items-center gap-1.5 transition-all"
             >
               Next: Select Doctor <ArrowRight className="w-4 h-4" />
             </button>
@@ -202,12 +202,12 @@ const BookAppointment = () => {
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-              <Stethoscope className="w-5 h-5 text-brand-blue" />
+              <Stethoscope className="w-5 h-5 text-teal-600" />
               Step 2: Choose Specialist Doctor
             </h3>
             <button
               onClick={() => setStep(1)}
-              className="text-xs text-slate-500 hover:text-brand-blue flex items-center gap-1 font-semibold"
+              className="text-xs text-slate-500 hover:text-teal-600 flex items-center gap-1 font-semibold"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back
             </button>
@@ -225,7 +225,7 @@ const BookAppointment = () => {
                   onClick={() => setSelectedDoctor(doc)}
                   className={`p-4 rounded-2xl border-2 cursor-pointer transition-all flex items-start space-x-3 ${
                     selectedDoctor?._id === doc._id
-                      ? 'border-teal-600 bg-brand-sky/10/50 shadow-md'
+                      ? 'border-teal-600 bg-teal-50 shadow-md'
                       : 'border-slate-100 bg-slate-50 hover:border-slate-300'
                   }`}
                 >
@@ -240,7 +240,7 @@ const BookAppointment = () => {
                   <div>
                     <h4 className="font-bold text-slate-900 text-sm">{doc.userId?.name}</h4>
                     <p className="text-xs text-slate-500">{doc.specialization}</p>
-                    <div className="mt-2 text-xs font-bold text-brand-blue">
+                    <div className="mt-2 text-xs font-bold text-teal-600">
                       Fee: ${doc.consultationFee} • {doc.experienceYears} Yrs Exp
                     </div>
                   </div>
@@ -261,7 +261,7 @@ const BookAppointment = () => {
               type="button"
               disabled={!selectedDoctor}
               onClick={() => setStep(3)}
-              className="px-6 py-2.5 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky disabled:opacity-40 flex items-center gap-1.5 transition-all"
+              className="px-6 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 disabled:opacity-40 flex items-center gap-1.5 transition-all"
             >
               Next: Select Date & Slot <ArrowRight className="w-4 h-4" />
             </button>
@@ -274,12 +274,12 @@ const BookAppointment = () => {
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-brand-blue" />
+              <Calendar className="w-5 h-5 text-teal-600" />
               Step 3: Select Date & Available Slot
             </h3>
             <button
               onClick={() => setStep(2)}
-              className="text-xs text-slate-500 hover:text-brand-blue flex items-center gap-1 font-semibold"
+              className="text-xs text-slate-500 hover:text-teal-600 flex items-center gap-1 font-semibold"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back
             </button>
@@ -294,7 +294,7 @@ const BookAppointment = () => {
                 min={new Date().toISOString().split('T')[0]}
                 value={appointmentDate}
                 onChange={(e) => setAppointmentDate(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue text-slate-800 font-semibold"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500 text-slate-800 font-semibold"
               />
             </div>
 
@@ -315,7 +315,7 @@ const BookAppointment = () => {
                       onClick={() => setTimeSlot(slot)}
                       className={`px-3 py-2 rounded-xl text-xs font-bold border transition-all text-center ${
                         timeSlot === slot
-                          ? 'bg-brand-blue text-white border-teal-600 shadow-sm'
+                          ? 'bg-teal-600 text-white border-teal-600 shadow-sm'
                           : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-teal-400'
                       }`}
                     >
@@ -339,7 +339,7 @@ const BookAppointment = () => {
               type="button"
               disabled={!timeSlot}
               onClick={() => setStep(4)}
-              className="px-6 py-2.5 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky disabled:opacity-40 flex items-center gap-1.5 transition-all"
+              className="px-6 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 disabled:opacity-40 flex items-center gap-1.5 transition-all"
             >
               Next: Reason & Confirm <ArrowRight className="w-4 h-4" />
             </button>
@@ -352,20 +352,20 @@ const BookAppointment = () => {
         <form onSubmit={handleSubmitBooking} className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-brand-blue" />
+              <CheckCircle2 className="w-5 h-5 text-teal-600" />
               Step 4: Consultation Details & Confirmation
             </h3>
             <button
               type="button"
               onClick={() => setStep(3)}
-              className="text-xs text-slate-500 hover:text-brand-blue flex items-center gap-1 font-semibold"
+              className="text-xs text-slate-500 hover:text-teal-600 flex items-center gap-1 font-semibold"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back
             </button>
           </div>
 
           {/* Appointment Summary Box */}
-          <div className="p-4 bg-brand-sky/10/60 rounded-2xl border border-teal-100 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <div className="p-4 bg-teal-50 rounded-2xl border border-teal-100 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
             <div>
               <span className="text-[10px] uppercase font-bold text-slate-400 block">Doctor</span>
               <span className="font-bold text-slate-800">{selectedDoctor?.userId?.name}</span>
@@ -394,7 +394,7 @@ const BookAppointment = () => {
               value={reasonForVisit}
               onChange={(e) => setReasonForVisit(e.target.value)}
               placeholder="Describe your current symptoms, how long you have experienced them, or if this is a follow-up visit..."
-              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
             />
           </div>
 
@@ -409,7 +409,7 @@ const BookAppointment = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-8 py-3 rounded-xl bg-brand-blue hover:bg-brand-sky text-white font-bold text-xs shadow-lg shadow-teal-600/25 transition-all flex items-center gap-1.5 disabled:opacity-50"
+              className="px-8 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-lg shadow-teal-600/25 transition-all flex items-center gap-1.5 disabled:opacity-50"
             >
               <CheckCircle2 className="w-4 h-4" />
               {submitting ? 'Confirming...' : 'Confirm Appointment Booking'}

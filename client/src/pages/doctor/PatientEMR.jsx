@@ -164,7 +164,7 @@ const PatientEMR = () => {
         <div>
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center text-xs font-semibold text-slate-500 hover:text-brand-blue mb-2 transition-colors"
+            className="inline-flex items-center text-xs font-semibold text-slate-500 hover:text-teal-600 mb-2 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5 mr-1" />
             Back
@@ -200,7 +200,7 @@ const PatientEMR = () => {
           <select
             value={selectedPatientId}
             onChange={(e) => setSelectedPatientId(e.target.value)}
-            className="w-full sm:w-96 px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:outline-none focus:border-brand-blue bg-white"
+            className="w-full sm:w-96 px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-500 bg-white"
           >
             <option value="">-- Choose a patient --</option>
             {patients.map((p) => (
@@ -239,7 +239,7 @@ const PatientEMR = () => {
         {/* Vitals Recording Section */}
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm space-y-4">
           <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider flex items-center gap-2">
-            <Activity className="w-4 h-4 text-brand-blue" />
+            <Activity className="w-4 h-4 text-teal-600" />
             Patient Vitals
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs">
@@ -250,7 +250,7 @@ const PatientEMR = () => {
                 value={vitals.bloodPressure}
                 onChange={(e) => setVitals({ ...vitals, bloodPressure: e.target.value })}
                 placeholder="120/80 mmHg"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
             <div>
@@ -260,7 +260,7 @@ const PatientEMR = () => {
                 value={vitals.heartRate}
                 onChange={(e) => setVitals({ ...vitals, heartRate: e.target.value })}
                 placeholder="72"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
             <div>
@@ -270,7 +270,7 @@ const PatientEMR = () => {
                 value={vitals.temperature}
                 onChange={(e) => setVitals({ ...vitals, temperature: e.target.value })}
                 placeholder="98.6"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
             <div>
@@ -280,7 +280,7 @@ const PatientEMR = () => {
                 value={vitals.weight}
                 onChange={(e) => setVitals({ ...vitals, weight: e.target.value })}
                 placeholder="70"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
             <div>
@@ -290,7 +290,7 @@ const PatientEMR = () => {
                 value={vitals.respiratoryRate}
                 onChange={(e) => setVitals({ ...vitals, respiratoryRate: e.target.value })}
                 placeholder="16"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
           </div>
@@ -299,7 +299,7 @@ const PatientEMR = () => {
         {/* Clinical Assessment Section */}
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm space-y-4">
           <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider flex items-center gap-2">
-            <FileText className="w-4 h-4 text-brand-blue" />
+            <FileText className="w-4 h-4 text-teal-600" />
             Diagnosis & Clinical Assessment
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -311,7 +311,7 @@ const PatientEMR = () => {
                 value={diagnosis}
                 onChange={(e) => setDiagnosis(e.target.value)}
                 placeholder="e.g. Acute Bronchitis, Essential Hypertension"
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue font-semibold"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500 font-semibold"
               />
             </div>
             <div>
@@ -321,7 +321,7 @@ const PatientEMR = () => {
                 value={symptoms}
                 onChange={(e) => setSymptoms(e.target.value)}
                 placeholder="Fever, dry cough, fatigue"
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
           </div>
@@ -331,13 +331,13 @@ const PatientEMR = () => {
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider flex items-center gap-2">
-              <Heart className="w-4 h-4 text-brand-blue" />
+              <Heart className="w-4 h-4 text-teal-600" />
               Medication Prescriptions
             </h3>
             <button
               type="button"
               onClick={handleAddPrescriptionRow}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-brand-sky/10 text-brand-blue text-xs font-bold hover:bg-brand-sky/20 transition-colors"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-teal-50 text-teal-600 text-xs font-bold hover:bg-teal-700/20 transition-colors"
             >
               <Plus className="w-3.5 h-3.5" />
               Add Medicine
@@ -423,7 +423,7 @@ const PatientEMR = () => {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Drink plenty of fluids, rest, avoid strenuous activities..."
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500"
               />
             </div>
             <div>
@@ -432,7 +432,7 @@ const PatientEMR = () => {
                 type="date"
                 value={followUpDate}
                 onChange={(e) => setFollowUpDate(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue text-slate-700"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500 text-slate-700"
               />
             </div>
           </div>
@@ -443,7 +443,7 @@ const PatientEMR = () => {
           <button
             type="submit"
             disabled={submitting}
-            className="px-8 py-3.5 rounded-xl bg-brand-blue hover:bg-brand-sky text-white font-bold text-sm shadow-lg shadow-teal-600/25 transition-all flex items-center gap-2 disabled:opacity-50"
+            className="px-8 py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-lg shadow-teal-600/25 transition-all flex items-center gap-2 disabled:opacity-50"
           >
             <CheckCircle className="w-4 h-4" />
             {submitting ? 'Finalizing Record...' : 'Complete Consultation & Issue EMR'}

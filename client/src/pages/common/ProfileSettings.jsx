@@ -163,7 +163,7 @@ const ProfileSettings = () => {
         {role === 'patient' && (
           <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-4">
             <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider flex items-center gap-2">
-              <Heart className="w-4 h-4 text-brand-blue" />
+              <Heart className="w-4 h-4 text-teal-600" />
               Patient Health Parameters
             </h3>
 
@@ -226,7 +226,7 @@ const ProfileSettings = () => {
         {role === 'doctor' && (
           <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-4">
             <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider flex items-center gap-2">
-              <Shield className="w-4 h-4 text-brand-blue" />
+              <Shield className="w-4 h-4 text-teal-600" />
               Doctor Profile Details
             </h3>
 
@@ -257,7 +257,7 @@ const ProfileSettings = () => {
           <button
             type="submit"
             disabled={saving}
-            className="px-8 py-3 rounded-xl bg-brand-blue hover:bg-brand-sky text-white font-bold text-xs shadow-md shadow-brand-blue/20 disabled:opacity-50 flex items-center gap-2"
+            className="px-8 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md shadow-teal-600/20 disabled:opacity-50 flex items-center gap-2"
           >
             <Save className="w-4 h-4" />
             {saving ? 'Saving...' : 'Save Changes'}

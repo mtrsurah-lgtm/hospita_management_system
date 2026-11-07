@@ -33,7 +33,7 @@ const DepartmentsPage = () => {
       case 'orthopedics':
         return <Bone className="w-8 h-8 text-blue-500" />;
       default:
-        return <Activity className="w-8 h-8 text-brand-sky" />;
+        return <Activity className="w-8 h-8 text-teal-400" />;
     }
   };
 
@@ -44,7 +44,7 @@ const DepartmentsPage = () => {
   return (
     <div className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center max-w-2xl mx-auto mb-12">
-        <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Clinical Divisions</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-teal-600">Clinical Divisions</span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Specialized Medical Care</h1>
         <p className="mt-3 text-sm text-slate-500">
           Our integrated clinical departments combine cutting-edge medical technology with experienced healthcare practitioners.
@@ -85,12 +85,12 @@ const DepartmentsPage = () => {
 
             <div className="px-8 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-600 flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-brand-blue" />
+                <Users className="w-4 h-4 text-teal-600" />
                 {dept.doctorCount || 1} Registered Doctors
               </span>
               <Link
                 to={`/doctors?department=${dept._id}`}
-                className="text-xs font-bold text-brand-blue hover:text-brand-blue hover:underline"
+                className="text-xs font-bold text-teal-600 hover:text-teal-600 hover:underline"
               >
                 View Specialists →
               </Link>

@@ -52,7 +52,7 @@ const LandingPage = () => {
       case 'orthopedics':
         return <Bone className="w-6 h-6 text-blue-500" />;
       default:
-        return <Activity className="w-6 h-6 text-brand-sky" />;
+        return <Activity className="w-6 h-6 text-teal-400" />;
     }
   };
 
@@ -63,8 +63,8 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-sky/20/80 text-teal-800 text-xs font-bold tracking-wide uppercase">
-                <ShieldCheck className="w-4 h-4 text-brand-blue" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/20/80 text-teal-800 text-xs font-bold tracking-wide uppercase">
+                <ShieldCheck className="w-4 h-4 text-teal-600" />
                 Accredited Multi-Speciality Medical Center
               </div>
 
@@ -83,7 +83,7 @@ const LandingPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link
                   to="/register"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-brand-blue text-white font-bold hover:bg-brand-sky shadow-lg shadow-teal-600/25 transition-all text-base"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-teal-600 text-white font-bold hover:bg-teal-700 shadow-lg shadow-teal-600/25 transition-all text-base"
                 >
                   <Calendar className="w-5 h-5 mr-2" />
                   Book an Appointment
@@ -93,7 +93,7 @@ const LandingPage = () => {
                   to="/doctors"
                   className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white border border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 transition-all text-base shadow-sm"
                 >
-                  <Stethoscope className="w-5 h-5 mr-2 text-brand-blue" />
+                  <Stethoscope className="w-5 h-5 mr-2 text-teal-600" />
                   Browse Specialists
                 </Link>
               </div>
@@ -120,7 +120,7 @@ const LandingPage = () => {
                     className="w-full h-[460px] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-                    <span className="text-xs uppercase font-bold tracking-wider text-brand-purple">Certified Team</span>
+                    <span className="text-xs uppercase font-bold tracking-wider text-teal-300">Certified Team</span>
                     <h3 className="text-xl font-bold">World-Class Medical Specialists</h3>
                     <p className="text-xs text-slate-200 mt-1">Dedicated to precision diagnosis and humane clinical care.</p>
                   </div>
@@ -147,19 +147,19 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue">50+</p>
+              <p className="text-3xl sm:text-4xl font-extrabold text-teal-600">50+</p>
               <p className="text-sm font-semibold text-slate-600 mt-1">Certified Specialists</p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue">12</p>
+              <p className="text-3xl sm:text-4xl font-extrabold text-teal-600">12</p>
               <p className="text-sm font-semibold text-slate-600 mt-1">Modern Departments</p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue">24/7</p>
+              <p className="text-3xl sm:text-4xl font-extrabold text-teal-600">24/7</p>
               <p className="text-sm font-semibold text-slate-600 mt-1">Emergency & Lab</p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue">100%</p>
+              <p className="text-3xl sm:text-4xl font-extrabold text-teal-600">100%</p>
               <p className="text-sm font-semibold text-slate-600 mt-1">Digital Health Records</p>
             </div>
           </div>
@@ -171,12 +171,12 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Centers of Excellence</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-600">Centers of Excellence</span>
               <h2 className="text-3xl font-extrabold text-slate-900 mt-1">Specialized Medical Departments</h2>
             </div>
             <Link
               to="/departments"
-              className="mt-4 sm:mt-0 text-sm font-bold text-brand-blue hover:text-brand-blue flex items-center gap-1"
+              className="mt-4 sm:mt-0 text-sm font-bold text-teal-600 hover:text-teal-600 flex items-center gap-1"
             >
               View All Departments <ArrowRight className="w-4 h-4" />
             </Link>
@@ -195,7 +195,7 @@ const LandingPage = () => {
                 <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">{dept.description}</p>
                 <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span>{dept.doctorCount || 1} Doctor(s)</span>
-                  <Link to="/doctors" className="font-bold text-brand-blue hover:underline">
+                  <Link to="/doctors" className="font-bold text-teal-600 hover:underline">
                     Consult →
                   </Link>
                 </div>
@@ -210,12 +210,12 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Our Medical Faculty</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-600">Our Medical Faculty</span>
               <h2 className="text-3xl font-extrabold text-slate-900 mt-1">Consult With Expert Doctors</h2>
             </div>
             <Link
               to="/doctors"
-              className="mt-4 sm:mt-0 text-sm font-bold text-brand-blue hover:text-brand-blue flex items-center gap-1"
+              className="mt-4 sm:mt-0 text-sm font-bold text-teal-600 hover:text-teal-600 flex items-center gap-1"
             >
               Browse Doctor Directory <ArrowRight className="w-4 h-4" />
             </Link>
@@ -238,7 +238,7 @@ const LandingPage = () => {
                   />
                 </div>
                 <div className="p-5 space-y-2">
-                  <span className="inline-block text-[11px] font-bold text-brand-blue bg-brand-sky/10 px-2.5 py-0.5 rounded-full">
+                  <span className="inline-block text-[11px] font-bold text-teal-600 bg-teal-50 px-2.5 py-0.5 rounded-full">
                     {doc.departmentId?.name || 'Specialist'}
                   </span>
                   <h4 className="font-bold text-slate-900 text-base">{doc.userId?.name}</h4>
@@ -251,7 +251,7 @@ const LandingPage = () => {
                     </div>
                     <Link
                       to="/register"
-                      className="px-3 py-1.5 rounded-lg bg-brand-blue text-white text-xs font-bold hover:bg-brand-sky transition-colors"
+                      className="px-3 py-1.5 rounded-lg bg-teal-600 text-white text-xs font-bold hover:bg-teal-700 transition-colors"
                     >
                       Book Slot
                     </Link>
@@ -267,14 +267,14 @@ const LandingPage = () => {
       <section className="py-20 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-sky">Simplified Healthcare</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Simplified Healthcare</span>
             <h2 className="text-3xl font-extrabold mt-1">How Aegis Health Works</h2>
             <p className="text-slate-400 text-sm mt-3">From booking to digital follow-up in 3 simple steps.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-slate-800/60 p-8 rounded-2xl border border-slate-700/60 relative">
-              <span className="w-10 h-10 rounded-full bg-brand-blue text-slate-950 font-black flex items-center justify-center text-lg mb-6">
+              <span className="w-10 h-10 rounded-full bg-teal-600 text-white font-black flex items-center justify-center text-lg mb-6">
                 1
               </span>
               <h3 className="text-xl font-bold mb-2">Select Doctor & Slot</h3>
@@ -284,7 +284,7 @@ const LandingPage = () => {
             </div>
 
             <div className="bg-slate-800/60 p-8 rounded-2xl border border-slate-700/60 relative">
-              <span className="w-10 h-10 rounded-full bg-brand-blue text-slate-950 font-black flex items-center justify-center text-lg mb-6">
+              <span className="w-10 h-10 rounded-full bg-teal-600 text-white font-black flex items-center justify-center text-lg mb-6">
                 2
               </span>
               <h3 className="text-xl font-bold mb-2">Consultation & EMR</h3>
@@ -294,7 +294,7 @@ const LandingPage = () => {
             </div>
 
             <div className="bg-slate-800/60 p-8 rounded-2xl border border-slate-700/60 relative">
-              <span className="w-10 h-10 rounded-full bg-brand-blue text-slate-950 font-black flex items-center justify-center text-lg mb-6">
+              <span className="w-10 h-10 rounded-full bg-teal-600 text-white font-black flex items-center justify-center text-lg mb-6">
                 3
               </span>
               <h3 className="text-xl font-bold mb-2">Digital Prescriptions</h3>
@@ -318,13 +318,13 @@ const LandingPage = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
             <Link
               to="/register"
-              className="px-8 py-3.5 rounded-xl bg-white text-teal-900 font-extrabold hover:bg-brand-sky/10 shadow-lg transition-all"
+              className="px-8 py-3.5 rounded-xl bg-white text-teal-900 font-extrabold hover:bg-teal-50 shadow-lg transition-all"
             >
               Create Free Patient Account
             </Link>
             <Link
               to="/login"
-              className="px-8 py-3.5 rounded-xl bg-teal-800 text-white font-bold border border-brand-blue hover:bg-brand-sky transition-all"
+              className="px-8 py-3.5 rounded-xl bg-teal-800 text-white font-bold border border-teal-600 hover:bg-teal-700 transition-all"
             >
               Sign In to Portal
             </Link>

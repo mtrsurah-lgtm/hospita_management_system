@@ -139,7 +139,7 @@ const AppointmentDesk = () => {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky shadow-sm transition-all"
+          className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 shadow-sm transition-all"
         >
           <Plus className="w-4 h-4 mr-1.5" />
           Schedule Appointment
@@ -172,7 +172,7 @@ const AppointmentDesk = () => {
               onClick={() => setStatusFilter(st)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                 statusFilter === st
-                  ? 'bg-brand-blue text-white shadow-sm'
+                  ? 'bg-teal-600 text-white shadow-sm'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -187,7 +187,7 @@ const AppointmentDesk = () => {
             type="date"
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-brand-blue text-slate-700"
+            className="px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500 text-slate-700"
           />
           {dateFilter && (
             <button
@@ -228,12 +228,12 @@ const AppointmentDesk = () => {
                 ) : (
                   appointments.map((a) => (
                     <tr key={a._id} className="hover:bg-slate-50/60 transition-colors">
-                      <td className="py-3.5 px-4 font-bold text-brand-blue">
+                      <td className="py-3.5 px-4 font-bold text-teal-600">
                         #{a.tokenNumber || 1}
                       </td>
                       <td className="py-3.5 px-4">
                         <p className="font-bold text-slate-900">{new Date(a.appointmentDate).toLocaleDateString()}</p>
-                        <p className="text-[11px] text-brand-blue font-semibold">{a.timeSlot}</p>
+                        <p className="text-[11px] text-teal-600 font-semibold">{a.timeSlot}</p>
                       </td>
                       <td className="py-3.5 px-4">
                         <p className="font-bold text-slate-800">{a.patientId?.userId?.name}</p>
@@ -369,7 +369,7 @@ const AppointmentDesk = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 rounded-xl bg-brand-blue text-white font-bold hover:bg-brand-sky disabled:opacity-50"
+              className="px-5 py-2 rounded-xl bg-teal-600 text-white font-bold hover:bg-teal-700 disabled:opacity-50"
             >
               {submitting ? 'Booking...' : 'Confirm Appointment'}
             </button>

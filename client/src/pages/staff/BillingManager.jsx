@@ -135,7 +135,7 @@ const BillingManager = () => {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-brand-blue text-white font-bold text-xs hover:bg-brand-sky shadow-sm transition-all"
+          className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 shadow-sm transition-all"
         >
           <Plus className="w-4 h-4 mr-1.5" />
           Generate New Invoice
@@ -167,7 +167,7 @@ const BillingManager = () => {
             onClick={() => setStatusFilter(st)}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
               statusFilter === st
-                ? 'bg-brand-blue text-white shadow-sm'
+                ? 'bg-teal-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -205,7 +205,7 @@ const BillingManager = () => {
                 ) : (
                   invoices.map((inv) => (
                     <tr key={inv._id} className="hover:bg-slate-50/60 transition-colors">
-                      <td className="py-3.5 px-4 font-bold text-brand-blue">{inv.invoiceNumber}</td>
+                      <td className="py-3.5 px-4 font-bold text-teal-600">{inv.invoiceNumber}</td>
                       <td className="py-3.5 px-4 text-slate-600">
                         {new Date(inv.createdAt).toLocaleDateString()}
                       </td>
@@ -227,7 +227,7 @@ const BillingManager = () => {
                         {inv.paymentStatus !== 'Paid' && (
                           <button
                             onClick={() => handleCollectPayment(inv._id, inv.totalAmount)}
-                            className="px-3 py-1.5 rounded-lg bg-brand-blue text-white font-bold hover:bg-brand-sky transition-colors shadow-sm"
+                            className="px-3 py-1.5 rounded-lg bg-teal-600 text-white font-bold hover:bg-teal-700 transition-colors shadow-sm"
                           >
                             Collect ${inv.totalAmount - inv.paidAmount}
                           </button>
@@ -271,7 +271,7 @@ const BillingManager = () => {
               <button
                 type="button"
                 onClick={handleAddItem}
-                className="text-xs font-bold text-brand-blue hover:underline flex items-center gap-1"
+                className="text-xs font-bold text-teal-600 hover:underline flex items-center gap-1"
               >
                 <Plus className="w-3.5 h-3.5" /> Add Line Item
               </button>
@@ -348,7 +348,7 @@ const BillingManager = () => {
 
           <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-between text-sm">
             <span className="font-bold text-slate-600">Total Invoice Amount:</span>
-            <span className="text-xl font-extrabold text-brand-blue">${calculateTotal()}</span>
+            <span className="text-xl font-extrabold text-teal-600">${calculateTotal()}</span>
           </div>
 
           <div className="pt-3 border-t border-slate-100 flex justify-end gap-2">
@@ -362,7 +362,7 @@ const BillingManager = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 rounded-xl bg-brand-blue text-white font-bold hover:bg-brand-sky disabled:opacity-50"
+              className="px-5 py-2 rounded-xl bg-teal-600 text-white font-bold hover:bg-teal-700 disabled:opacity-50"
             >
               {submitting ? 'Generating...' : 'Issue Invoice'}
             </button>

@@ -51,26 +51,26 @@ const AdminDashboard = () => {
       {/* Welcome Banner */}
       <div className="bg-gradient-to-r from-teal-800 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <span className="text-xs uppercase font-bold tracking-widest text-brand-sky">Executive Overview</span>
+          <span className="text-xs uppercase font-bold tracking-widest text-teal-400">Executive Overview</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold mt-1">Aegis Health Management Console</h2>
           <p className="text-sm text-slate-300 mt-1">
             System uptime 99.98% • Real-time clinical analytics & administrative oversight
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2.5">
           <Link
             to="/admin/users"
-            className="px-4 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-sky text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-all shadow-md shadow-teal-500/20"
+            className="px-4 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-all shadow-md shadow-teal-500/20 whitespace-nowrap active:scale-95"
           >
-            <UserPlus className="w-4 h-4" />
-            Add Staff / Doctor
+            <UserPlus className="w-4 h-4 shrink-0" />
+            <span>Add Staff / Doctor</span>
           </Link>
           <Link
             to="/admin/departments"
-            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-all"
+            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-all whitespace-nowrap active:scale-95 shadow-sm"
           >
-            <PlusCircle className="w-4 h-4" />
-            New Department
+            <PlusCircle className="w-4 h-4 shrink-0" />
+            <span>New Department</span>
           </Link>
         </div>
       </div>
@@ -115,10 +115,10 @@ const AdminDashboard = () => {
         <div className="lg:col-span-5 bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-brand-blue" />
+              <Building2 className="w-5 h-5 text-teal-600" />
               Department Staffing
             </h3>
-            <Link to="/admin/departments" className="text-xs font-bold text-brand-blue hover:underline">
+            <Link to="/admin/departments" className="text-xs font-bold text-teal-600 hover:underline">
               Manage
             </Link>
           </div>
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
                   <div
-                    className="bg-brand-blue h-full rounded-full transition-all"
+                    className="bg-teal-600 h-full rounded-full transition-all"
                     style={{
                       width: `${Math.min(100, Math.max(15, (dept.doctorCount / (counts.doctors || 1)) * 100))}%`,
                     }}
@@ -147,7 +147,7 @@ const AdminDashboard = () => {
         <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
-              <CalendarCheck className="w-5 h-5 text-brand-blue" />
+              <CalendarCheck className="w-5 h-5 text-teal-600" />
               Recent Appointments
             </h3>
             <span className="text-xs text-slate-400 font-medium">Real-time status</span>

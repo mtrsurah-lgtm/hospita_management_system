@@ -3,8 +3,8 @@ import React from 'react';
 const StatCard = ({ title, value, icon: Icon, change, trend = 'up', color = 'teal', subtitle }) => {
   const colorMap = {
     teal: {
-      bg: 'bg-brand-sky/10',
-      text: 'text-brand-blue',
+      bg: 'bg-teal-50',
+      text: 'text-teal-600',
       border: 'border-teal-100',
     },
     blue: {
