@@ -105,7 +105,7 @@ const LandingPage = () => {
                 </div>
                 <div>
                   <span className="block font-semibold text-slate-800">24/7 Immediate Emergency Care</span>
-                  <span className="text-rose-600 font-bold">+1 (800) 911-AEGIS (23447)</span>
+                  <span className="text-rose-600 font-bold">+1 (800) 911-HOSP (4677)</span>
                 </div>
               </div>
             </div>
@@ -231,8 +231,12 @@ const LandingPage = () => {
                   <img
                     src={
                       doc.userId?.avatar ||
-                      `https://ui-avatars.com/api/?name=${encodeURIComponent(doc.userId?.name || 'Doctor')}&background=2323FF&color=fff`
+                      `https://ui-avatars.com/api/?name=${encodeURIComponent(doc.userId?.name || 'Doctor')}&background=0d9488&color=fff`
                     }
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(doc.userId?.name || 'Doctor')}&background=0d9488&color=fff`;
+                    }}
                     alt={doc.userId?.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -268,7 +272,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Simplified Healthcare</span>
-            <h2 className="text-3xl font-extrabold mt-1">How Aegis Health Works</h2>
+            <h2 className="text-3xl font-extrabold mt-1">How Hospital Management System Works</h2>
             <p className="text-slate-400 text-sm mt-3">From booking to digital follow-up in 3 simple steps.</p>
           </div>
 

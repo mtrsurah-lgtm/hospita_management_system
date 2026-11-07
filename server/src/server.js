@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
+const path = require('path');
 require('dotenv').config();
 
 const { connectDB } = require('./config/db');
@@ -82,6 +83,10 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Serve public static assets
+app.use('/public', express.static(path.join(__dirname, '../public')));
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
+
 // Health Check API
 app.get('/health', (req, res) => {
   res.status(200).json({
@@ -102,7 +107,7 @@ app.get('/', (req, res) => {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Aegis Health — Backend API Portal</title>
+        <title>Hospital Management System — Backend API Portal</title>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
         <style>
           * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -131,7 +136,7 @@ app.get('/', (req, res) => {
             <span class="dot"></span>
             Backend API Online & Healthy
           </div>
-          <h1>Aegis Health REST API</h1>
+          <h1>Hospital Management System REST API</h1>
           <p class="desc">
             You are connected to the Express & MongoDB REST API server (Port 5000). The interactive hospital web application is running on Port 5173.
           </p>

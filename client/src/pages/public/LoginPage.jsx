@@ -65,7 +65,7 @@ const LoginPage = () => {
             <Activity className="w-7 h-7 stroke-[2.5]" />
           </div>
           <h2 className="mt-4 text-2xl font-extrabold text-slate-900 tracking-tight">
-            Sign In to Aegis Health
+            Sign In to Hospital Management System
           </h2>
           <p className="mt-1 text-xs text-slate-500">
             Enter your credentials to access your role-based portal

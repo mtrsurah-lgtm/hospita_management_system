@@ -12,6 +12,7 @@ import LoginPage from './pages/public/LoginPage';
 import RegisterPage from './pages/public/RegisterPage';
 import DepartmentsPage from './pages/public/DepartmentsPage';
 import DoctorsPage from './pages/public/DoctorsPage';
+import ContactPage from './pages/public/ContactPage';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -50,6 +51,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/departments" element={<DepartmentsPage />} />
         <Route path="/doctors" element={<DoctorsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Route>
 
       {/* Admin Module */}

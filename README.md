@@ -1,4 +1,4 @@
-# 🏥 Aegis Health — Advanced Hospital Management System (HMS)
+# 🏥 Hospital Management System (HMS) — Healthcare Portal
 
 An enterprise-grade, production-ready Full-Stack Hospital Management System built from scratch with the **MERN Stack** (MongoDB, Express.js, React.js Vite, Node.js). 
 

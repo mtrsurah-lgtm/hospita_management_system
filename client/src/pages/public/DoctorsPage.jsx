@@ -101,8 +101,12 @@ const DoctorsPage = () => {
                   <img
                     src={
                       doc.userId?.avatar ||
-                      `https://ui-avatars.com/api/?name=${encodeURIComponent(doc.userId?.name || 'Doctor')}&background=2323FF&color=fff`
+                      `https://ui-avatars.com/api/?name=${encodeURIComponent(doc.userId?.name || 'Doctor')}&background=0d9488&color=fff`
                     }
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(doc.userId?.name || 'Doctor')}&background=0d9488&color=fff`;
+                    }}
                     alt={doc.userId?.name}
                     className="w-20 h-20 rounded-2xl object-cover border border-slate-200 shrink-0 shadow-sm"
                   />

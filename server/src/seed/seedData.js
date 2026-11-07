@@ -72,7 +72,7 @@ const seedHospitalData = async (isStandalone = false) => {
       password: 'Doctor@123',
       role: 'doctor',
       phone: '+1 (555) 012-6633',
-      avatar: 'https://images.unsplash.com/photo-1594824813512-257ebc81882f?w=150',
+      avatar: '/images/dr-emily-watson.jpg',
     });
 
     const docUser4 = await User.create({

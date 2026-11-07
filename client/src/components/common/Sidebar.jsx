@@ -69,7 +69,7 @@ const Sidebar = () => {
           <Activity className="w-6 h-6 stroke-[2.5]" />
         </div>
         <div>
-          <h2 className="font-bold tracking-tight text-white leading-tight">AEGIS HEALTH</h2>
+          <h2 className="font-bold tracking-tight text-white leading-tight">HOSPITAL MANAGEMENT</h2>
           <span className="text-[11px] font-semibold tracking-wider uppercase text-teal-400">
             {role?.toUpperCase()} PORTAL
           </span>

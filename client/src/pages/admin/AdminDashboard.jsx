@@ -52,7 +52,7 @@ const AdminDashboard = () => {
       <div className="bg-gradient-to-r from-teal-800 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <span className="text-xs uppercase font-bold tracking-widest text-teal-400">Executive Overview</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold mt-1">Aegis Health Management Console</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold mt-1">Hospital Management Console</h2>
           <p className="text-sm text-slate-300 mt-1">
             System uptime 99.98% • Real-time clinical analytics & administrative oversight
           </p>

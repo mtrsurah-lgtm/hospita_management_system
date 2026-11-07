@@ -26,11 +26,11 @@ const PrintPrescriptionModal = ({ isOpen, onClose, record }) => {
                 <Activity className="w-7 h-7 stroke-[2.5]" />
               </div>
               <div>
-                <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">AEGIS HEALTH MEDICAL CENTER</h2>
+                <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">HOSPITAL MANAGEMENT MEDICAL CENTER</h2>
                 <p className="text-[11px] text-slate-500 font-semibold">
                   Multi-Speciality Healthcare & Diagnostic Research • Accreditation Level 1
                 </p>
-                <p className="text-[10px] text-slate-400">4500 Healthcare Blvd, Medical District, Springfield • +1 (800) 911-AEGIS</p>
+                <p className="text-[10px] text-slate-400">4500 Healthcare Blvd, Medical District, Springfield • +1 (800) 911-HOSP</p>
               </div>
             </div>
 
@@ -156,7 +156,7 @@ const PrintPrescriptionModal = ({ isOpen, onClose, record }) => {
           {/* Doctor Signature & Verification Footer */}
           <div className="pt-8 border-t border-slate-200 flex items-end justify-between text-xs">
             <div className="text-[10px] text-slate-400 space-y-0.5">
-              <p>Electronically generated and verified through Aegis Health HMS.</p>
+              <p>Electronically generated and verified through Hospital Management System (HMS).</p>
               <p>Valid without physical stamp if verified with patient digital ID.</p>
             </div>
 

@@ -34,10 +34,10 @@ const Navbar = () => {
             </div>
             <div>
               <span className="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1.5">
-                AEGIS <span className="text-teal-600 font-bold">HEALTH</span>
+                HOSPITAL <span className="text-teal-600 font-bold">MANAGEMENT</span>
               </span>
               <span className="block text-[10px] font-semibold uppercase tracking-widest text-slate-400 -mt-1">
-                Advanced Hospital System
+                Medical & Healthcare Portal
               </span>
             </div>
           </Link>
@@ -52,6 +52,9 @@ const Navbar = () => {
             </Link>
             <Link to="/doctors" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
               Find Doctors
+            </Link>
+            <Link to="/contact" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
+              Contact Us
             </Link>
           </nav>
 
@@ -131,6 +134,13 @@ const Navbar = () => {
             className="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-lg"
           >
             Find Doctors
+          </Link>
+          <Link
+            to="/contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-lg"
+          >
+            Contact Us
           </Link>
 
           <div className="pt-4 border-t border-slate-100 flex flex-col gap-2">
