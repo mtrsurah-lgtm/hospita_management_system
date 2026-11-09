@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Activity, User, Mail, Lock, Phone, Calendar, Heart, AlertCircle, ArrowRight } from 'lucide-react';
+import { Activity, User, Mail, Lock, Phone, Calendar, Heart, AlertCircle, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const RegisterPage = () => {
@@ -13,6 +13,7 @@ const RegisterPage = () => {
     gender: 'Male',
     bloodGroup: 'O+',
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 

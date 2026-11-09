@@ -200,10 +200,10 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`====================================================`);
   console.log(`  HMS Backend Server running in [${process.env.NODE_ENV || 'development'}] mode`);
-  console.log(`  Listening on port: http://localhost:${PORT}`);
+  console.log(`  Listening on address: http://0.0.0.0:${PORT}`);
   console.log(`====================================================`);
 });
 
