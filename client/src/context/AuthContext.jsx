@@ -40,8 +40,11 @@ export const AuthProvider = ({ children }) => {
             }
           }
         } catch (err) {
-          console.warn('[AuthContext] Session verification failed, clearing auth state:', err.message);
-          logout();
+          console.warn('[AuthContext] Session verification notice:', err.message);
+          // Only clear session if explicitly 401 unauthorized
+          if (err.response?.status === 401) {
+            logout();
+          }
         }
       }
       setLoading(false);
