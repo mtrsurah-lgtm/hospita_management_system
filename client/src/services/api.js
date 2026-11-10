@@ -1,36 +1,50 @@
 import axios from 'axios';
 import { handleLocalRequest } from './localDatabase';
 
+const isRemoteHost =
+  typeof window !== 'undefined' &&
+  window.location.hostname !== 'localhost' &&
+  window.location.hostname !== '127.0.0.1';
+
+// If running in cloud/mobile/remote deployment (e.g. *.vercel.app or another device/network)
+// and no remote backend API URL is configured, ALWAYS activate the in-browser local DB engine!
+let isBackendOffline = Boolean(isRemoteHost && !import.meta.env.VITE_API_BASE_URL);
+
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
-  timeout: 5000,
+  timeout: 4000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-let isBackendOffline = false;
-
-// Proactively check if backend is reachable (e.g. when not running localhost)
+// Proactively check if local backend is reachable when testing on localhost
 const detectBackendAvailability = async () => {
-  if (typeof window !== 'undefined') {
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 1500);
-      const res = await fetch('/health', { signal: controller.signal });
-      clearTimeout(timeoutId);
-      if (res.ok) {
+  if (isRemoteHost && !import.meta.env.VITE_API_BASE_URL) {
+    isBackendOffline = true;
+    console.info('[HMS Engine] Remote deployment detected (Vercel/Cloud/Mobile). Running in Autonomous In-Browser DB Mode.');
+    return;
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1200);
+    const res = await fetch('http://localhost:5000/health', { signal: controller.signal });
+    clearTimeout(timeoutId);
+    const contentType = res.headers.get('content-type') || '';
+    if (res.ok && contentType.includes('application/json')) {
+      const data = await res.json();
+      if (data && data.status === 'healthy') {
         isBackendOffline = false;
         return;
       }
-    } catch {
-      // Backend not responding
     }
-
-    // Backend is offline or not responding
-    isBackendOffline = true;
-    console.info('[HMS Engine] Operating in Autonomous In-Browser Database Mode (No localhost server required).');
+  } catch {
+    // Localhost:5000 not responding
   }
+
+  isBackendOffline = true;
+  console.info('[HMS Engine] Operating in Autonomous In-Browser Database Mode (No localhost server required).');
 };
 
 detectBackendAvailability();
@@ -43,23 +57,23 @@ api.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
 
-    // If backend is known to be offline, bypass network call directly
-    if (isBackendOffline) {
-      config.adapter = async () => {
+    // Always route directly to In-Browser Local Database if backend is offline or on remote host without API
+    if (isBackendOffline || (isRemoteHost && !import.meta.env.VITE_API_BASE_URL)) {
+      config.adapter = async (cfg) => {
         try {
-          const localData = await handleLocalRequest(config);
+          const localData = await handleLocalRequest(cfg);
           return {
             data: localData,
             status: 200,
             statusText: 'OK',
             headers: {},
-            config,
+            config: cfg,
           };
         } catch (localErr) {
           const status = localErr.response?.status || 400;
           const data = localErr.response?.data || { success: false, message: localErr.message };
           return Promise.reject({
-            config,
+            config: cfg,
             response: { status, data, headers: {} },
             message: localErr.message,
           });
@@ -72,7 +86,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response Interceptor: Global 401 & 403 handling + Seamless Local DB Fallback on Network Error
+// Response Interceptor: Global 401 & 403 handling + Seamless Local DB Fallback on Any Network Error
 api.interceptors.response.use(
   (response) => {
     return response.data;
@@ -80,14 +94,13 @@ api.interceptors.response.use(
   async (error) => {
     const config = error.config;
 
-    // If server is unreachable, connection refused, or 404 on API endpoint
-    const isNetworkError = !error.response || error.code === 'ERR_NETWORK' || error.message?.includes('Network Error');
-    const isApi404 = error.response && error.response.status === 404;
-
-    if (config && (isNetworkError || isApi404)) {
+    // Any network failure or error connecting to backend -> fall back to local database immediately
+    if (config) {
       isBackendOffline = true;
       try {
-        console.warn(`[HMS Engine] Backend connection unavailable (${error.message || '404'}). Falling back to In-Browser Local DB for ${config.method?.toUpperCase()} ${config.url}`);
+        console.warn(
+          `[HMS Engine] Network/backend connection failed (${error.message || error.code}). Serving from In-Browser Local DB: ${config.method?.toUpperCase()} ${config.url}`
+        );
         const localData = await handleLocalRequest(config);
         return localData;
       } catch (localErr) {
