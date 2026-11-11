@@ -41,9 +41,13 @@ import MedicalHistory from './pages/patient/MedicalHistory';
 // Shared Profile Settings
 import ProfileSettings from './pages/common/ProfileSettings';
 
+// AI Healthcare Chatbot
+import AIChatbot from './components/common/AIChatbot';
+
 function App() {
   return (
-    <Routes>
+    <>
+      <Routes>
       {/* Public Pages */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<LandingPage />} />
@@ -121,6 +125,8 @@ function App() {
       {/* Fallback Catch-All */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    <AIChatbot />
+  </>
   );
 }
 
