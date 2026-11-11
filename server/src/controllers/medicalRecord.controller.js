@@ -172,6 +172,18 @@ const updateMedicalRecord = async (req, res, next) => {
       return errorResponse(res, 404, 'Medical record not found');
     }
 
+    // Role and ownership check: Doctors can only update their own clinical records
+    if (req.user.role === 'doctor') {
+      const doc = await Doctor.findOne({ userId: req.user._id });
+      if (!doc || record.doctorId.toString() !== doc._id.toString()) {
+        return errorResponse(
+          res,
+          403,
+          'Unauthorized. Doctors can only update their own authored medical records.'
+        );
+      }
+    }
+
     const { diagnosis, symptoms, prescriptions, labTests, vitals, notes, followUpDate } = req.body;
 
     if (diagnosis) record.diagnosis = diagnosis;

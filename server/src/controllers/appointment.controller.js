@@ -59,7 +59,7 @@ const bookAppointment = async (req, res, next) => {
       patientId,
       doctorId,
       departmentId: selectedDeptId,
-      appointmentDate: targetDate,
+      appointmentDate: startOfDay,
       timeSlot,
       reasonForVisit,
       type: type || 'Consultation',
@@ -80,6 +80,9 @@ const bookAppointment = async (req, res, next) => {
 
     return successResponse(res, 201, 'Appointment booked successfully', populated);
   } catch (error) {
+    if (error.code === 11000) {
+      return errorResponse(res, 400, `Time slot ${req.body.timeSlot} is already booked for this doctor on this day. Please select another slot.`);
+    }
     next(error);
   }
 };
@@ -165,6 +168,19 @@ const getAppointmentById = async (req, res, next) => {
 
     if (!appointment) {
       return errorResponse(res, 404, 'Appointment not found');
+    }
+
+    // Role-based ownership verification
+    if (req.user.role === 'patient') {
+      const patient = await Patient.findOne({ userId: req.user._id });
+      if (!patient || appointment.patientId?._id?.toString() !== patient._id.toString()) {
+        return errorResponse(res, 403, 'Unauthorized to view another patient’s appointment');
+      }
+    } else if (req.user.role === 'doctor') {
+      const doctor = await Doctor.findOne({ userId: req.user._id });
+      if (!doctor || appointment.doctorId?._id?.toString() !== doctor._id.toString()) {
+        return errorResponse(res, 403, 'Unauthorized to view appointments assigned to other doctors');
+      }
     }
 
     return successResponse(res, 200, 'Appointment details', appointment);
@@ -253,13 +269,16 @@ const rescheduleAppointment = async (req, res, next) => {
       return errorResponse(res, 400, `Slot ${timeSlot} on this date is already booked.`);
     }
 
-    appointment.appointmentDate = targetDate;
+    appointment.appointmentDate = startOfDay;
     appointment.timeSlot = timeSlot;
     appointment.status = 'Confirmed';
     await appointment.save();
 
     return successResponse(res, 200, 'Appointment rescheduled successfully', appointment);
   } catch (error) {
+    if (error.code === 11000) {
+      return errorResponse(res, 400, `Slot ${req.body.timeSlot} on this date is already booked.`);
+    }
     next(error);
   }
 };

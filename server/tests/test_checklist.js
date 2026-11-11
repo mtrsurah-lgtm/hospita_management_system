@@ -537,6 +537,52 @@ async function runChecklist() {
     const unauthBlockPass = unauthRes.status === 401;
     recordTest('Security', 'Unauthenticated API requests are rejected', unauthBlockPass);
 
+    // 7.6 Public admin registration is blocked
+    const escalateAdminRes = await request('/api/auth/register', {
+      method: 'POST',
+      body: {
+        name: 'Attacker Admin',
+        email: 'attacker.admin@test.com',
+        password: 'Password@123',
+        role: 'admin',
+      },
+    });
+    const blockAdminRegPass = escalateAdminRes.status === 403;
+    recordTest('Security', 'Public admin registration is rejected', blockAdminRegPass);
+
+    // 7.7 Single appointment ownership enforced
+    // Patient John attempts to view an appointment that does not belong to him
+    const AppointmentModel = require('../src/models/Appointment');
+    const anotherAppointment = await AppointmentModel.findOne({ patientId: { $ne: samplePatientId } });
+    let apptOwnershipPass = true;
+    if (anotherAppointment) {
+      const ownRes = await request(`/api/appointments/${anotherAppointment._id}`, {
+        headers: { Authorization: `Bearer ${patientToken}` },
+      });
+      apptOwnershipPass = ownRes.status === 403;
+    }
+    recordTest('Security', 'Single appointment ownership enforced for patients', apptOwnershipPass);
+
+    // 7.8 Doctor medical record ownership enforced
+    // Doctor Sarah attempts to edit a medical record authored by another doctor
+    const otherDoctorRecord = await require('../src/models/MedicalRecord').findOne({ doctorId: { $ne: sampleDoctorId } });
+    let docRecordOwnershipPass = true;
+    if (otherDoctorRecord) {
+      const updateOtherDocRecRes = await request(`/api/medical-records/${otherDoctorRecord._id}`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${doctorToken}` },
+        body: { diagnosis: 'Malicious Overwrite' },
+      });
+      docRecordOwnershipPass = updateOtherDocRecRes.status === 403;
+    }
+    recordTest('Security', 'Doctor medical record ownership enforced', docRecordOwnershipPass);
+
+    // 7.9 Backend homepage does not leak admin credentials
+    const homeHtmlRes = await fetch(`${BASE_URL}/`, { headers: { Accept: 'text/html' } });
+    const homeHtml = await homeHtmlRes.text();
+    const noCredentialsLeaked = !homeHtml.includes('Admin@123');
+    recordTest('Security', 'Backend homepage does not expose admin credentials', noCredentialsLeaked);
+
     // ==========================================
     // 8. Analytics (6 items)
     // ==========================================

@@ -30,8 +30,16 @@ const register = async (req, res, next) => {
       return errorResponse(res, 400, 'An account with this email already exists.');
     }
 
-    // Patients can self-register. Creating admin/doctor/staff is restricted or defaults to patient
-    const assignedRole = role && ['patient', 'doctor', 'staff', 'admin'].includes(role) ? role : 'patient';
+    // Public registration is restricted strictly to patients.
+    // Privileged accounts (admin, doctor, staff) must be created by administrators via /api/users
+    if (role && role !== 'patient') {
+      return errorResponse(
+        res,
+        403,
+        'Public registration is restricted to patients only. Staff, doctor, and admin accounts must be created by an administrator.'
+      );
+    }
+    const assignedRole = 'patient';
 
     const user = await User.create({
       name,

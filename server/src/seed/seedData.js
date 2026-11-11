@@ -282,8 +282,13 @@ const seedHospitalData = async (isStandalone = false) => {
 
     console.log('[Seeder] Creating Appointments...');
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     const tomorrow = new Date(Date.now() + 86400000);
+    tomorrow.setHours(0, 0, 0, 0);
+
     const yesterday = new Date(Date.now() - 86400000);
+    yesterday.setHours(0, 0, 0, 0);
 
     const appt1 = await Appointment.create({
       patientId: patient1._id,

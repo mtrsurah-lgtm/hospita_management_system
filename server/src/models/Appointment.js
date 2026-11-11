@@ -54,7 +54,15 @@ const appointmentSchema = new mongoose.Schema(
   }
 );
 
-appointmentSchema.index({ doctorId: 1, appointmentDate: 1, timeSlot: 1 });
+// Compound unique index enforces concurrency-safe booking per doctor, date, and slot.
+// Partial filter allows cancelled slots to be freed and rebooked.
+appointmentSchema.index(
+  { doctorId: 1, appointmentDate: 1, timeSlot: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { status: { $in: ['Pending', 'Confirmed', 'Completed'] } },
+  }
+);
 appointmentSchema.index({ patientId: 1 });
 appointmentSchema.index({ status: 1 });
 

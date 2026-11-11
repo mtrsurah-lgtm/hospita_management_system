@@ -44,18 +44,29 @@ app.use(helmet());
 
 // CORS Configuration
 const allowedOrigins = [
-  process.env.CLIENT_URL || 'http://localhost:5173',
+  process.env.CLIENT_URL,
+  'http://localhost:5173',
   'http://localhost:3000',
   'http://127.0.0.1:5173',
-];
+  'http://127.0.0.1:3000',
+].filter(Boolean);
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (e.g. mobile apps, curl, server-to-server)
+      if (!origin) {
+        return callback(null, true);
+      }
+      const isAllowed =
+        allowedOrigins.includes(origin) ||
+        (process.env.NODE_ENV !== 'production' && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) ||
+        /^https:\/\/[a-zA-Z0-9-]+\.vercel\.app$/.test(origin);
+
+      if (isAllowed) {
         callback(null, true);
       } else {
-        callback(null, true); // Allow dev origins seamlessly
+        callback(new Error('Blocked by CORS: Untrusted origin not allowed'));
       }
     },
     credentials: true,
@@ -160,8 +171,8 @@ app.get('/', (req, res) => {
               <span class="val"><a href="/health" style="color: #2dd4bf; text-decoration: none;">/health (200 OK)</a></span>
             </div>
             <div class="info-row">
-              <span class="label">Default Admin</span>
-              <span class="val">admin@hospital.com (Admin@123)</span>
+              <span class="label">Access Control</span>
+              <span class="val">Role-Based Access Control (RBAC) Active</span>
             </div>
           </div>
 
