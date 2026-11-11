@@ -62,8 +62,14 @@ const billingSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+billingSchema.virtual('balanceDue').get(function () {
+  return Math.max(0, (this.totalAmount || 0) - (this.paidAmount || 0));
+});
 
 module.exports = mongoose.model('Billing', billingSchema);
 

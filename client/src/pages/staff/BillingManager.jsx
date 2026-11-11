@@ -190,6 +190,7 @@ const BillingManager = () => {
                   <th className="py-3.5 px-4">Patient</th>
                   <th className="py-3.5 px-4">Total Amount</th>
                   <th className="py-3.5 px-4">Paid Amount</th>
+                  <th className="py-3.5 px-4">Balance Due</th>
                   <th className="py-3.5 px-4">Status</th>
                   <th className="py-3.5 px-4">Method</th>
                   <th className="py-3.5 px-4 text-right">Actions</th>
@@ -198,7 +199,7 @@ const BillingManager = () => {
               <tbody className="divide-y divide-slate-100">
                 {invoices.length === 0 ? (
                   <tr>
-                    <td colSpan="8" className="py-8 text-center text-slate-400">
+                    <td colSpan="9" className="py-8 text-center text-slate-400">
                       No invoices recorded.
                     </td>
                   </tr>
@@ -218,6 +219,9 @@ const BillingManager = () => {
                       </td>
                       <td className="py-3.5 px-4 font-semibold text-emerald-700">
                         ${inv.paidAmount}
+                      </td>
+                      <td className="py-3.5 px-4 font-bold text-amber-700">
+                        ${Math.max(0, inv.totalAmount - inv.paidAmount)}
                       </td>
                       <td className="py-3.5 px-4">
                         <Badge variant={inv.paymentStatus}>{inv.paymentStatus}</Badge>

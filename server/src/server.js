@@ -200,12 +200,15 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`====================================================`);
-  console.log(`  HMS Backend Server running in [${process.env.NODE_ENV || 'development'}] mode`);
-  console.log(`  Listening on address: http://0.0.0.0:${PORT}`);
-  console.log(`====================================================`);
-});
+let server;
+if (process.env.NODE_ENV !== 'test') {
+  server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`====================================================`);
+    console.log(`  HMS Backend Server running in [${process.env.NODE_ENV || 'development'}] mode`);
+    console.log(`  Listening on address: http://0.0.0.0:${PORT}`);
+    console.log(`====================================================`);
+  });
+}
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {

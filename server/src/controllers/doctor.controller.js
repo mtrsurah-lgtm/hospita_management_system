@@ -1,4 +1,5 @@
 const Doctor = require('../models/Doctor');
+const User = require('../models/User');
 const Appointment = require('../models/Appointment');
 const { successResponse, errorResponse } = require('../utils/response');
 
@@ -7,17 +8,23 @@ const { successResponse, errorResponse } = require('../utils/response');
 // @access  Public
 const getDoctors = async (req, res, next) => {
   try {
-    const { departmentId, search, page = 1, limit = 12 } = req.query;
+    const { departmentId, department, search, page = 1, limit = 12 } = req.query;
     const filter = {};
 
-    if (departmentId) {
-      filter.departmentId = departmentId;
+    const targetDept = departmentId || department;
+    if (targetDept) {
+      filter.departmentId = targetDept;
     }
 
     if (search) {
+      const matchedUsers = await User.find({
+        name: { $regex: search, $options: 'i' },
+      }).select('_id');
+      const userIds = matchedUsers.map((u) => u._id);
       filter.$or = [
         { specialization: { $regex: search, $options: 'i' } },
         { bio: { $regex: search, $options: 'i' } },
+        { userId: { $in: userIds } },
       ];
     }
 
@@ -134,8 +141,9 @@ const getDoctorAvailability = async (req, res, next) => {
       });
     }
 
-    // Check weekday
-    const targetDate = new Date(date);
+    // Check weekday safely regardless of timezone offset
+    const dateParts = date.split('T')[0].split('-').map(Number);
+    const targetDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 12, 0, 0);
     const dayName = targetDate.toLocaleDateString('en-US', { weekday: 'long' });
 
     const isAvailableDay = doctor.availableDays.includes(dayName);
@@ -149,11 +157,8 @@ const getDoctorAvailability = async (req, res, next) => {
     }
 
     // Find booked appointments on this date that are not cancelled
-    const startOfDay = new Date(date);
-    startOfDay.setHours(0, 0, 0, 0);
-
-    const endOfDay = new Date(date);
-    endOfDay.setHours(23, 59, 59, 999);
+    const startOfDay = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
+    const endOfDay = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 23, 59, 59, 999);
 
     const bookedAppointments = await Appointment.find({
       doctorId: doctor._id,

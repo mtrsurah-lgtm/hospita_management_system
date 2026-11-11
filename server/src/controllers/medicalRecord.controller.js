@@ -35,6 +35,10 @@ const createMedicalRecord = async (req, res, next) => {
       return errorResponse(res, 400, 'Patient, Doctor, and Diagnosis are required');
     }
 
+    const normalizedLabTests = (labTests || []).map((t) =>
+      typeof t === 'string' ? { testName: t, status: 'Ordered' } : t
+    );
+
     const record = await MedicalRecord.create({
       appointmentId: appointmentId || null,
       patientId,
@@ -42,7 +46,7 @@ const createMedicalRecord = async (req, res, next) => {
       diagnosis,
       symptoms: symptoms || [],
       prescriptions: prescriptions || [],
-      labTests: labTests || [],
+      labTests: normalizedLabTests,
       vitals: vitals || {},
       notes: notes || '',
       followUpDate: followUpDate || null,
@@ -173,7 +177,11 @@ const updateMedicalRecord = async (req, res, next) => {
     if (diagnosis) record.diagnosis = diagnosis;
     if (symptoms) record.symptoms = symptoms;
     if (prescriptions) record.prescriptions = prescriptions;
-    if (labTests) record.labTests = labTests;
+    if (labTests) {
+      record.labTests = labTests.map((t) =>
+        typeof t === 'string' ? { testName: t, status: 'Ordered' } : t
+      );
+    }
     if (vitals) record.vitals = { ...record.vitals, ...vitals };
     if (notes !== undefined) record.notes = notes;
     if (followUpDate !== undefined) record.followUpDate = followUpDate;

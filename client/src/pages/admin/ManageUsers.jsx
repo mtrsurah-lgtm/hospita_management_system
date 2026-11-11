@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Search, Plus, Check, X, Shield, Stethoscope, UserCheck, UserX, AlertCircle } from 'lucide-react';
+import { Users, Search, Plus, Check, X, Shield, Stethoscope, UserCheck, UserX, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import api from '../../services/api';
 import Badge from '../../components/common/Badge';
 import Modal from '../../components/common/Modal';
@@ -14,6 +14,7 @@ const ManageUsers = () => {
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -306,15 +307,26 @@ const ManageUsers = () => {
               <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
                 Initial Password
               </label>
-              <input
-                type="password"
-                required
-                minLength={6}
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                placeholder="••••••••"
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  minLength={6}
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  placeholder="••••••••"
+                  className="w-full pl-3 pr-10 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none transition-colors"
+                  title={showPassword ? 'Hide password' : 'Show password'}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
             </div>
           </div>
 
