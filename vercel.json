@@ -6,7 +6,8 @@
       "framework": "vite"
     },
     "antigravity-backend": {
-      "root": "server"
+      "root": "server",
+      "entrypoint": "src/server.js"
     }
   },
   "rewrites": [
